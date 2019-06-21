@@ -9,10 +9,7 @@ export const AppRoutes: Routes = [{
   children: [{
     path: '',
     loadChildren: './dashboard/dashboard.module#DashboardModule'
-  }, //{
-   // path: 'email',
-  //  loadChildren: './email/email.module#EmailModule'
- // },
+  },
    // {
     //path: 'components',
    // loadChildren: './components/components.module#ComponentsModule'
@@ -44,7 +41,8 @@ export const AppRoutes: Routes = [{
     {
     path: 'pages',
     loadChildren: './pages/pages.module#PagesModule'
-  },{
+  },
+    {
     path: 'taskboard',
     loadChildren: './taskboard/taskboard.module#TaskboardModule'
   }, {
@@ -58,20 +56,13 @@ export const AppRoutes: Routes = [{
     {
     path: 'widgets',
     loadChildren: './widgets/widgets.module#WidgetsModule'
-  },
-  {
-    path: 'social',
-    loadChildren: './social/social.module#SocialModule'
-  }, {
-    path: 'docs',
-    loadChildren: './docs/docs.module#DocsModule'
   }]
 },
 {
   path: '',
   component: AuthLayoutComponent,
   children: [{
-    path: 'authentication',
+    path: '',
     loadChildren: './authentication/authentication.module#AuthenticationModule'
   }, {
     path: 'error',

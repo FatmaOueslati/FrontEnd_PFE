@@ -5,7 +5,7 @@ import { MasksComponent } from './masks/masks.component';
 import { EditorComponent } from './editor/editor.component';
 import { ValidationComponent } from './validation/validation.component';
 import { UploadComponent } from './upload/upload.component';
-import { FormTreeComponent } from './tree/tree.component';
+
 
 export const FormRoutes: Routes = [
   {
@@ -39,12 +39,6 @@ export const FormRoutes: Routes = [
       component: UploadComponent,
       data: {
         heading: 'Upload'
-      }
-    }, {
-      path: 'tree',
-      component: FormTreeComponent,
-      data: {
-        heading: 'Tree'
       }
     }]
   }

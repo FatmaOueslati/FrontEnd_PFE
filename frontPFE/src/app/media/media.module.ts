@@ -6,8 +6,7 @@ import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { MediaRoutes } from './media.routing';
 import { GridComponent } from './grid/grid.component';
-import { TileComponent } from './tile/tile.component';
-import { ListComponent } from './list/list.component';
+
 
 @NgModule({
   imports: [
@@ -15,7 +14,7 @@ import { ListComponent } from './list/list.component';
     RouterModule.forChild(MediaRoutes),
     NgbTooltipModule
   ],
-  declarations: [GridComponent, TileComponent, ListComponent]
+  declarations: [GridComponent]
 })
 
 export class MediaModule {}
