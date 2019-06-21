@@ -41,10 +41,10 @@ export const AppRoutes: Routes = [{
    // path: 'maps',
     //loadChildren: './maps/maps.module#MapsModule'
  // },
-   /* {
+    {
     path: 'pages',
     loadChildren: './pages/pages.module#PagesModule'
-  },*/{
+  },{
     path: 'taskboard',
     loadChildren: './taskboard/taskboard.module#TaskboardModule'
   }, {

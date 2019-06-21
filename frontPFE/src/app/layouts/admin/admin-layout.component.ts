@@ -6,7 +6,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { MenuItems } from '../../shared/menu-items/menu-items';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
-import { TranslateService } from '@ngx-translate/core';
+
 
 const SMALL_WIDTH_BREAKPOINT = 991;
 
@@ -32,7 +32,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   showSettings = false;
   isDocked = false;
   isBoxed = false;
-  isOpened = true;
+  isOpened = false;
   mode = 'push';
   _mode = this.mode;
   _autoCollapseWidth = 991;
@@ -44,12 +44,10 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     public menuItems: MenuItems,
     private router: Router,
     private route: ActivatedRoute,
-    public translate: TranslateService,
     private modalService: NgbModal,
     private titleService: Title,
     private zone: NgZone) {
-    const browserLang: string = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+
     this.mediaMatcher.addListener(mql => zone.run(() => this.mediaMatcher = mql));
   }
 
@@ -76,9 +74,9 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   runOnRouteChange(): void {
-    if (this.isOver() || this.router.url === '/maps/fullscreen') {
+    /*if (this.isOver() || this.router.url === '/maps/fullscreen') {
       this.isOpened = false;
-    }
+    }*/
 
     this.route.children.forEach((route: ActivatedRoute) => {
       let activeRoute: ActivatedRoute = route;
@@ -99,9 +97,10 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     this.titleService.setTitle( 'WEVIOO | ' + newTitle );
   }
 
-  toogleSidebar(): void {
-    this.isOpened = !this.isOpened;
-  }
+
+ // toogleSidebar(): void {
+  //  this.isOpened = ! this.isOpened;
+ // }
 
   isOver(): boolean {
     return window.matchMedia(`(max-width: 991px)`).matches;
@@ -111,16 +110,5 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
    // this.modalService.open(search, { windowClass: 'search', backdrop: false });
  // }
 
-  addMenuItem(): void {
-    this.menuItems.add({
-      state: 'menu',
-      name: 'MENU',
-      type: 'sub',
-      icon: 'basic-webpage-txt',
-      children: [
-        {state: 'menu', name: 'MENU'},
-        {state: 'menu', name: 'MENU'}
-      ]
-    });
-  }
+
 }
