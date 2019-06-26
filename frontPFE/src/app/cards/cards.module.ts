@@ -8,7 +8,6 @@ import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 import { CardsRoutes } from './cards.routing';
 import { BasicComponent } from './basic/basic.component';
 import { PortletsComponent } from './portlets/portlets.component';
-import { DraggableComponent } from './draggable/draggable.component';
 
 @NgModule({
   imports: [
@@ -17,7 +16,7 @@ import { DraggableComponent } from './draggable/draggable.component';
     DragulaModule,
     NgbCollapseModule
   ],
-  declarations: [BasicComponent, PortletsComponent, DraggableComponent]
+  declarations: [BasicComponent, PortletsComponent]
 })
 
 export class CardsModule {}

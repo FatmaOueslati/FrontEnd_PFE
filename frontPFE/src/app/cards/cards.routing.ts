@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 
 import { BasicComponent } from './basic/basic.component';
 import { PortletsComponent } from './portlets/portlets.component';
-import { DraggableComponent } from './draggable/draggable.component';
+
 
 export const CardsRoutes: Routes = [
   {
@@ -18,12 +18,6 @@ export const CardsRoutes: Routes = [
       component: PortletsComponent,
       data: {
         heading: 'Portlets'
-      }
-    }, {
-      path: 'draggable',
-      component: DraggableComponent,
-      data: {
-        heading: 'Draggable'
       }
     }]
   }

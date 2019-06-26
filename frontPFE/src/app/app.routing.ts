@@ -31,13 +31,7 @@ export const AppRoutes: Routes = [{
     path: 'datatable',
     loadChildren: './datatable/datatable.module#DatatableModule'
   },
-    //{
-   // path: 'charts',
-   // loadChildren: './charts/charts.module#ChartsModule'
-  //},{
-   // path: 'maps',
-    //loadChildren: './maps/maps.module#MapsModule'
- // },
+
     {
     path: 'pages',
     loadChildren: './pages/pages.module#PagesModule'
@@ -54,6 +48,10 @@ export const AppRoutes: Routes = [{
     loadChildren: './media/media.module#MediaModule'
   },
     {
+      path: 'components',
+      loadChildren: './components/components.module#ComponentsModule'
+    },
+    {
     path: 'widgets',
     loadChildren: './widgets/widgets.module#WidgetsModule'
   }]
@@ -64,10 +62,11 @@ export const AppRoutes: Routes = [{
   children: [{
     path: '',
     loadChildren: './authentication/authentication.module#AuthenticationModule'
-  }, {
-    path: 'error',
-    loadChildren: './error/error.module#ErrorModule'
-  }, {
+  },
+    {
+      path: 'error',
+      loadChildren: './error/error.module#ErrorModule'
+    }, {
     path: 'landing',
     loadChildren: './landing/landing.module#LandingModule'
   }]
