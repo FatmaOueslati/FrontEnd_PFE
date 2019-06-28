@@ -36,6 +36,7 @@
     "d3": "^4.8.0",
     "dragula": "3.7.2",
     "intl": "^1.2.5",
+    "jwt-decode": "^2.2.0",
     "ng-sidebar": "6.0.4",
     "ng2-dragula": "1.5.0",
     "ng2-file-upload": "1.2.1",

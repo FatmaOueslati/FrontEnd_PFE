@@ -6,6 +6,7 @@ import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { MenuItems } from '../../shared/menu-items/menu-items';
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/operator/filter';
+import {TookenService} from '../../authentication/signin/tooken.service';
 
 
 const SMALL_WIDTH_BREAKPOINT = 991;
@@ -19,7 +20,8 @@ export interface Options {
 @Component({
   selector: 'app-layout',
   templateUrl: './admin-layout.component.html',
-  styleUrls: ['./admin-layout.component.scss']
+  styleUrls: ['./admin-layout.component.scss'],
+  providers: [TookenService],
 })
 export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
 
@@ -41,6 +43,7 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('sidebar') sidebar;
 
   constructor (
+    private token: TookenService,
     public menuItems: MenuItems,
     private router: Router,
     private route: ActivatedRoute,
@@ -106,7 +109,13 @@ export class AdminLayoutComponent implements OnInit, OnDestroy, AfterViewInit {
     return window.matchMedia(`(max-width: 991px)`).matches;
   }
 
-  //openSearch(search) {
+
+  logout(event: MouseEvent) {
+    event.preventDefault();
+    this.token.remove();
+    this.router.navigateByUrl('/signin');
+  }
+//openSearch(search) {
    // this.modalService.open(search, { windowClass: 'search', backdrop: false });
  // }
 
