@@ -5,14 +5,14 @@
 
     <!-- Icon -->
     <div class="fadeIn first">
-      <img src="assets/img/wevioo.png" id="icon" alt="User Icon" />
+      <img src="assets/images/unsplash/logo-wevioo.png" id="icon" alt="User Icon" />
     </div>
 
     <!-- Login Form -->
     <form #loginForm=ngForm (ngSubmit)="onSubmit()"  >
-      <input type="text" id="login" class="fadeIn second" [(ngModel)]="form.username" name="login" placeholder="login">
-      <input type="password" id="password" class="fadeIn third" [(ngModel)]="form.password" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" [disabled]="!loginForm" value="Log In">
+      <input type="text" id="login" class="fadeIn second" [(ngModel)]="form.username" name="login" placeholder="nom d'utilisateur">
+      <input type="password" id="password" class="fadeIn third" [(ngModel)]="form.password" name="login" placeholder="mot de passe">
+      <input type="submit" class="fadeIn fourth" [disabled]="!loginForm" value="Se connecter">
     </form>
 
     <!-- Remind Passowrd
