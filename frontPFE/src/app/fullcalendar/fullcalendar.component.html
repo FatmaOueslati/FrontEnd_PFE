@@ -1,3 +1,21 @@
+<br>
+
+<div class=row>
+  <div class="col-md-2"></div>
+  <div class="col-md-5">
+
+      <form class="form-inline">
+        <input class="form-control col-form-label-lg-3" type="search" placeholder="Search" aria-label="Search">
+        <button type="button" class="btn btn-danger">OK</button>
+      </form>
+
+  </div>
+
+</div>
+<br>
+<div class=row>
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
 <ng-template ngbModalContainer></ng-template>
 
 <ng-template #modalContent let-close="close">
@@ -31,20 +49,20 @@
           mwlCalendarPreviousView
           [view]="view"
           [(viewDate)]="viewDate">
-          Previous
+          Avant
         </div>
         <div
           class="btn btn-secondary"
           mwlCalendarToday
           [(viewDate)]="viewDate">
-          Today
+          Aujourd'hui
         </div>
         <div
           class="btn btn-secondary"
           mwlCalendarNextView
           [view]="view"
           [(viewDate)]="viewDate">
-          Next
+          Suivant
         </div>
       </div>
 
@@ -66,24 +84,24 @@
       </div>
     </div>
     <div class="col text-center align-self-center d-none d-sm-block">
-      <h6 class="text-uppercase mb-0">{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</h6>
+      <h6 class="text-uppercase mb-0">{{ viewDate | calendarDate:(view + 'ViewTitle'):'fr' }}</h6>
     </div>
     <div class="col text-right">
       <div class="btn-group d-none d-lg-inline-flex">
         <div class="btn btn-secondary"
           (click)="view = 'month'"
           [class.active]="view === 'month'">
-          Month
+          Mois
         </div>
         <div class="btn btn-secondary"
           (click)="view = 'week'"
           [class.active]="view === 'week'">
-          Week
+          Semaine
         </div>
         <div class="btn btn-secondary"
           (click)="view = 'day'"
           [class.active]="view === 'day'">
-          Day
+          Jour
         </div>
       </div>
 
@@ -132,4 +150,6 @@
       (eventTimesChanged)="eventTimesChanged($event)">
     </mwl-calendar-day-view>
   </div>
+</div>
+</div>
 </div>
