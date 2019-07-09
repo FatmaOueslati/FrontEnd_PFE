@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import {DashboardService} from './dashboard.service';
 
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>'
 })
 export class AppComponent {
-  constructor(translate: TranslateService) {
+  constructor(translate: TranslateService ) {
     translate.addLangs(['en', 'fr']);
     translate.setDefaultLang('en');
 

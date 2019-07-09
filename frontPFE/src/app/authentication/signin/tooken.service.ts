@@ -8,7 +8,6 @@ export class TookenService {
   constructor() { }
   handle(token) {
     this.set(token);
-    // console.log(this.isValid());
   }
   set(token) {
     // localStorage.setItem('token', token);
@@ -21,7 +20,7 @@ export class TookenService {
     const token = localStorage.getItem('token');
     const user = jwt_decode(token);
     // console.log(user);
-    return user
+    return user;
   }
   get() {
     return localStorage.getItem('token');

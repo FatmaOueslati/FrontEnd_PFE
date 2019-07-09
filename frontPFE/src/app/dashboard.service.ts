@@ -6,8 +6,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 @Injectable()
 export class DashboardService {
   headers: any ;
+  x: any ;
 
   constructor(private http: HttpClient , private token: TookenService) {
-    this.headers = new HttpHeaders({'x-access-token': this.token.get() });
+    this.x = 'Bearer' + ' ' + this.token.get();
+    this.headers = new HttpHeaders({Authorization : this.x });
+    console.log(this.x);
+  }
+  getCards() {
+    return this.http.get(  'http://localhost:8000/api/projects' , {headers : this.headers} );
   }
 }

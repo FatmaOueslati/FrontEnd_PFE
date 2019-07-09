@@ -1,19 +1,23 @@
-import { Component } from '@angular/core';
+import { Component , OnInit } from '@angular/core';
 import * as shape from 'd3-shape';
 import { colorSets  } from '@swimlane/ngx-charts/release/utils/color-sets';
+import {DashboardService} from '../dashboard.service';
 import {
   single,
   generateData
 } from '../shared/chartData';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  styleUrls: ['./dashboard.component.scss'],
+  providers: [DashboardService]
 })
 
-export class DashboardComponent {
+export class DashboardComponent implements OnInit {
   single: any[];
+  cardsdaata: any;
   graph: {
     links: any[],
     nodes: any[]
@@ -59,8 +63,8 @@ export class DashboardComponent {
   gaugeShowAxis = true;
   gaugeValue = 50; // linear gauge value
   gaugePreviousValue = 70;
-
-  constructor() {
+  public error = null ;
+  constructor( private cards: DashboardService) {
     Object.assign(this, {
       single
     });
@@ -73,5 +77,14 @@ export class DashboardComponent {
 
   onLegendLabelClick(entry) {
     console.log('Legend clicked', entry);
+  }
+  LoadCards() {
+    this.cards.getCards().subscribe(data => {
+      this.cardsdaata = data ;
+    console.log(this.cardsdaata);
+    });
+  }
+  ngOnInit() {
+    this.LoadCards();
   }
 }
