@@ -2,6 +2,7 @@ import { Component , OnInit } from '@angular/core';
 import * as shape from 'd3-shape';
 import { colorSets  } from '@swimlane/ngx-charts/release/utils/color-sets';
 import {DashboardService} from '../dashboard.service';
+import {TookenService} from '../authentication/signin/tooken.service';
 import {
   single,
   generateData
@@ -12,7 +13,7 @@ import {
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [DashboardService]
+  providers: [DashboardService , TookenService]
 })
 
 export class DashboardComponent implements OnInit {
@@ -64,7 +65,8 @@ export class DashboardComponent implements OnInit {
   gaugeValue = 50; // linear gauge value
   gaugePreviousValue = 70;
   public error = null ;
-  constructor( private cards: DashboardService) {
+  public profile: any ;
+  constructor( private cards: DashboardService , private token: TookenService) {
     Object.assign(this, {
       single
     });
@@ -86,5 +88,7 @@ export class DashboardComponent implements OnInit {
   }
   ngOnInit() {
     this.LoadCards();
+    this.profile = this.token.getUserData()["id"];
+    console.log('haaaaaaaaaaaw elprofikkk' , this.profile);
   }
 }

@@ -11,7 +11,7 @@ export class DashboardService {
   constructor(private http: HttpClient , private token: TookenService) {
     this.x = 'Bearer' + ' ' + this.token.get();
     this.headers = new HttpHeaders({Authorization : this.x });
-    console.log(this.x);
+   // console.log(this.x);
   }
   getCards() {
     return this.http.get(  'http://localhost:8000/api/projects' , {headers : this.headers} );

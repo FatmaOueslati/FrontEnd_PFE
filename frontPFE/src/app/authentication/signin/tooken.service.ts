@@ -14,12 +14,12 @@ export class TookenService {
     localStorage.setItem('token', token.token);
     const decod = token.token ;
     const user = jwt_decode(decod);
-    // console.log(this.getUserData ()["userMatricule"]);
+    // console.log(this.getUserData());
   }
   getUserData () {
     const token = localStorage.getItem('token');
     const user = jwt_decode(token);
-    // console.log(user);
+    // console.log('opaaaaaaaaaaaaaaaaaaaaaaaaaa' , user);
     return user;
   }
   get() {
