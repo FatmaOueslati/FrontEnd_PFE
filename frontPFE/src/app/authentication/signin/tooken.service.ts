@@ -11,7 +11,8 @@ export class TookenService {
   }
   set(token) {
     // localStorage.setItem('token', token);
-    localStorage.setItem('token', token.token);
+    localStorage.setItem('token', token.token );
+    localStorage.setItem('id', token.id );
     const decod = token.token ;
     const user = jwt_decode(decod);
     // console.log(this.getUserData());
@@ -22,12 +23,17 @@ export class TookenService {
     // console.log('opaaaaaaaaaaaaaaaaaaaaaaaaaa' , user);
     return user;
   }
+  getUserID () {
+    const idUser = localStorage.getItem('id');
+    return idUser;
+  }
   get() {
     return localStorage.getItem('token');
 
   }
   remove() {
     localStorage.removeItem('token');
+    localStorage.removeItem('id');
   }
 
   isValid() {

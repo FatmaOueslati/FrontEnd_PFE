@@ -19,6 +19,9 @@ import {
 export class DashboardComponent implements OnInit {
   single: any[];
   cardsdaata: any;
+  projectsdata: any[];
+  userProjects: any[]= [];
+  projects: any;
   graph: {
     links: any[],
     nodes: any[]
@@ -71,6 +74,7 @@ export class DashboardComponent implements OnInit {
       single
     });
     this.dateData = generateData(5, false);
+    this.profile = this.token.getUserID();
   }
 
   select(data) {
@@ -81,14 +85,59 @@ export class DashboardComponent implements OnInit {
     console.log('Legend clicked', entry);
   }
   LoadCards() {
-    this.cards.getCards().subscribe(data => {
-      this.cardsdaata = data ;
-    console.log(this.cardsdaata);
+    this.cards.getCards(this.cardsdaata).subscribe(data => {
+     //  this.projectsdata = data ;
+     // this.projectsdata = Object.keys(data);
+      // this.projectsdata = Object['values'](data);
+     // this.projects = JSON.stringify(data);
+      this.projectsdata = Array.of(data);
+     console.log('daaaaaaaaaaaaaaaaaaaaaaaaaaaaata projects' , this.projectsdata);
+    });
+  }
+  LoadLinks() {
+    this.cards.getLinks(this.profile).subscribe(data => {
+      this.cardsdaata = data['projects'] ;
+      console.log(this.cardsdaata);
+      /*
+      console.log("data");
+
+      for (let d of data) {
+        console.log(d);
+      }
+      console.log(data);
+      this.cardsdaata = data['projects'] ;
+      this.LoadCards();
+      console.log('1' , this.cardsdaata);
+      */
     });
   }
   ngOnInit() {
-    this.LoadCards();
-    this.profile = this.token.getUserData()["id"];
-    console.log('haaaaaaaaaaaw elprofikkk' , this.profile);
+    // getting projects ids from user id
+    this.cards.getLinks(this.profile).subscribe(data => {
+      this.projectsdata = data['projects'] ;
+      console.log( ' +++++++++ ' );
+      console.log(this.projectsdata);
+
+      this.projectsdata.forEach(id => {
+        this.cards.getProjectFromUrl(id).subscribe(
+          project => {
+            console.log(project);
+            this.userProjects.push(project);
+          });
+          }
+        );
+      console.log('99999');
+       console.log(this.userProjects[0]);
+
+
+    });
+
+    // getting projects of the user
+    // this.cards.getProject()
+
+    // this.LoadCards();
+    this.LoadLinks();
+    // console.log('haaaaaaaaaaaw elprofil ID' , this.profile);
+
   }
 }

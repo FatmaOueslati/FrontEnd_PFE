@@ -13,7 +13,19 @@ export class DashboardService {
     this.headers = new HttpHeaders({Authorization : this.x });
    // console.log(this.x);
   }
-  getCards() {
-    return this.http.get(  'http://localhost:8000/api/projects' , {headers : this.headers} );
+  getLinks(id) {
+  //  return this.http.get(  'http://localhost:8000/api/projects/' + id , {headers : this.headers} );
+    return this.http.get(  'http://localhost:8000/api/users/' + id , {headers : this.headers} );
   }
+  getCards(id) {
+      return this.http.get(  'http://localhost:8000' + id , {headers : this.headers} );
+  }
+
+  getProject(id) {
+    return this.http.get(  'http://localhost:8000/api/projects/' + id , {headers : this.headers} );
+  }
+  getProjectFromUrl(id) {
+    return this.http.get(  'http://localhost:8000' + id , {headers : this.headers} );
+  }
+
 }

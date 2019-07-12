@@ -29,8 +29,8 @@
   <br>
   <br>
   <div>
-    <div class="row">
-    <div class="col-md-4" *ngFor="let card of cardsdaata" >
+    <div class="row" *ngIf="userProjects">
+    <div class="col-md-4" *ngFor="let card of userProjects">
       <div class="card">
         <div class="card-header">
          {{card.status}}

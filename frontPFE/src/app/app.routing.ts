@@ -19,12 +19,12 @@ export const AppRoutes: Routes = [{
     //loadChildren: './icons/icons.module#IconsModule'
   //},
     {
-    path: 'cards',
-    loadChildren: './cards/cards.module#CardsModule'
-  }, {
     path: 'forms',
     loadChildren: './form/form.module#FormModule'
-  }, {
+  },  {
+      path: 'cards',
+      loadChildren: './cards/cards.module#CardsModule'
+    },{
     path: 'tables',
     loadChildren: './tables/tables.module#TablesModule'
   }, {
