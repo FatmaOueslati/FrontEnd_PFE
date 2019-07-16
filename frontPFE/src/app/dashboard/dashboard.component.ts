@@ -1,19 +1,35 @@
 import { Component , OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as shape from 'd3-shape';
 import { colorSets  } from '@swimlane/ngx-charts/release/utils/color-sets';
 import {DashboardService} from '../dashboard.service';
 import {TookenService} from '../authentication/signin/tooken.service';
+import {NgbModal, ModalDismissReasons, NgbDatepicker, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import {NgbDateStruct, NgbDatepickerI18n} from '@ng-bootstrap/ng-bootstrap';
+
+const now = new Date();
+const I18N_VALUES = {
+  en: {
+    weekdays: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+    months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  },
+  fr: {
+    weekdays: ['Lu', 'Ma', 'Me', 'Je', 'Ve', 'Sa', 'Di'],
+    months: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil', 'Aou', 'Sep', 'Oct', 'Nov', 'Déc'],
+  }
+};
 import {
   single,
   generateData
 } from '../shared/chartData';
-
+import { NgbPanelChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  providers: [DashboardService , TookenService]
+  providers: [DashboardService , TookenService, NgbActiveModal ]
+
 })
 
 export class DashboardComponent implements OnInit {
@@ -69,12 +85,42 @@ export class DashboardComponent implements OnInit {
   gaugePreviousValue = 70;
   public error = null ;
   public profile: any ;
-  constructor( private cards: DashboardService , private token: TookenService) {
+  closeResult: string;
+  d2: any;
+  d3: any;
+  date1;
+  date2;
+  projectname: string;
+  projectdescription: string;
+  constructor( private cards: DashboardService , private token: TookenService, private modalService: NgbModal,
+               private modal: NgbActiveModal , private route: Router) {
     Object.assign(this, {
       single
     });
     this.dateData = generateData(5, false);
     this.profile = this.token.getUserID();
+  }
+
+
+
+  open(content) {
+    this.modalService.open(content, {}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+  }
+
+
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return  `with: ${reason}`;
+    }
   }
 
   select(data) {
@@ -98,17 +144,6 @@ export class DashboardComponent implements OnInit {
     this.cards.getLinks(this.profile).subscribe(data => {
       this.cardsdaata = data['projects'] ;
       console.log(this.cardsdaata);
-      /*
-      console.log("data");
-
-      for (let d of data) {
-        console.log(d);
-      }
-      console.log(data);
-      this.cardsdaata = data['projects'] ;
-      this.LoadCards();
-      console.log('1' , this.cardsdaata);
-      */
     });
   }
   ngOnInit() {
@@ -126,18 +161,48 @@ export class DashboardComponent implements OnInit {
           });
           }
         );
-      console.log('99999');
-       console.log(this.userProjects[0]);
-
-
     });
-
-    // getting projects of the user
-    // this.cards.getProject()
-
-    // this.LoadCards();
     this.LoadLinks();
-    // console.log('haaaaaaaaaaaw elprofil ID' , this.profile);
-
   }
+  CreateProject() {
+    console.log('done');
+    console.log(this.date1.year + '-' + this.date1.month + '-' + this.date1.day);
+    const dt1 = this.date1.year + '-' + this.date1.month + '-' + this.date1.day;
+    const dt2 = this.date2.year + '-' + this.date2.month + '-' + this.date2.day;
+    //
+    this.cards.addProject({
+      name: this.projectname,
+      description: this.projectdescription,
+      dateStart: dt1,
+      dateEnd: dt2,
+      status: 'En cours',
+      users: ['/api/users/' + this.profile],
+      epics: [],
+      meet: []
+    }).subscribe( data => {
+      this.userProjects.push(data);
+     // console.log('finaaaaaaaaaaaaaaal' , data);
+      }
+    );
+  }
+
+  // deleteProject(id:string){
+  //   this.userProjects.forEach( (item, index)=>
+  //   {
+  //     if ( project.id === id) {
+  //       this.userProjects.
+  //     }
+  //   })
+  // }
+  removeDocument(id) {
+    this.userProjects.forEach( (element, i) => {
+      if(element.id === id) {
+        this.cards.deleteProject(id).subscribe(() => {
+          console.log('deleted');
+        });
+        this.userProjects.splice(i,1 );
+      }
+    });
+  }
+
 }

@@ -33,7 +33,7 @@ export const ComponentsRoutes: Routes = [
         heading: 'Spinner'
       }
     }, {
-      path: 'accordion',
+      path: 'accordion/:id',
       component: AccordionComponent,
       data: {
         heading: 'Accordion'

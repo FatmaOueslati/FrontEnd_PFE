@@ -16,6 +16,9 @@ import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { SharedModule } from './shared/shared.module';
+import {BeforeLoginService} from './authentication/before-login.service';
+import {AfterLoginService} from './authentication/after-login.service';
+import {TookenService} from './authentication/signin/tooken.service';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -43,9 +46,9 @@ export function createTranslateLoader(http: HttpClient) {
     }),
     NgbModule.forRoot(),
     SidebarModule.forRoot(),
-    AgmCoreModule.forRoot({apiKey: 'YOURAPIKEY'})
+    AgmCoreModule.forRoot({apiKey: 'YOURAPIKEY'}),
   ],
-  providers: [],
+  providers: [TookenService , BeforeLoginService , AfterLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
