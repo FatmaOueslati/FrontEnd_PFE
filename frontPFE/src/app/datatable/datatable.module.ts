@@ -25,7 +25,7 @@ import { TableSortingComponent } from './table-sorting/table-sorting.component';
     TableFilterComponent,
    // TablePagingComponent,
     //TablePinningComponent,
-   // TableSelectionComponent,
+    TableSelectionComponent,
    // TableSortingComponent
   ]
 })

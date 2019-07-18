@@ -1,25 +1,25 @@
-<
+
 <div class="row">
   <div class="col-md-2">
   </div>
   <div class="col-md-8">
     <div class="card">
       <div class=center-block>
-        <div class="card-header">Ajouter une réunion</div>
+        <div class="card-header" >Ajouter une réunion</div>
         <div class="card-body">
           <form class="form-horizontal" novalidate>
 
             <div class="form-group row">
               <label for="id-titre" class="col-3 col-form-label">Titre</label>
               <div class="col-9">
-                <input class="form-control" type="text" value="" id="id-titre" placeholder="Titre">
+                <input [(ngModel)]="title" name="title" class="form-control" type="text" value="" id="id-titre" placeholder="Titre">
               </div>
             </div>
 
             <div class="form-group row">
               <label for="exampleFormControlSelect2" class="col-3 col-form-label">Type</label>
               <div class="col-6">
-                <select  class="form-control" id="exampleFormControlSelect2">
+                <select  [(ngModel)]="type" name="type" class="form-control" id="exampleFormControlSelect2">
                   <option value=""></option>
                   <option value="Urgente">Urgente</option>
                   <option value="Peu urgente">Peu urgente</option>
@@ -37,13 +37,13 @@
             <div class="form-group row">
               <label for="id-com" class="col-3 col-form-label">Description</label>
               <div class="col-9">
-                <input class="form-control" type="number" value="" id="id-com" placeholder="Point de complexité">
+                <input [(ngModel)]="description"  name="description" class="form-control" type="text" value="" id="id-com" placeholder="Description">
               </div>
             </div>
             <div class="form-group row">
               <label for="id-bv" class="col-3 col-form-label">Date</label>
               <div class="col-9">
-                <input class="form-control" type="date" value="" id="id-bv" placeholder="BV">
+                <input [(ngModel)]="date" name="date" class="form-control" type="date" value="" id="id-bv" placeholder="BV">
               </div>
             </div>
 
@@ -53,7 +53,7 @@
         <br>
         <div class="col-md-10">
           <div class="btn-group float-right mt-2" role="group">
-            <button type="button" class="btn btn-dark btn-lg mr-1">Ajouter</button>
+            <button (click)="addMeeting()" type="button" class="btn btn-dark btn-lg mr-1">Ajouter</button>
             <button type="button" class="btn btn-danger btn-lg mr-1">Annuler</button>
 
           </div>
@@ -100,41 +100,23 @@
             </th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody >
+          <tr *ngFor="let p of TableMeetings ; let i = index ">
             <th scope="row">
-              1
+              {{i+1}}
             </th>
             <td>
-              Urgente
+              {{p.type}}
             </td>
             <td>
-              Daily meeting
+              {{p.name}}
             </td>
             <td>
-              Vérification Token
+              {{p.description}}
             </td>
             <td>
-              17/03/2019
+              {{p.date | date:'yyyy-MM-dd' }}
             </td>
-          </tr>
-          <tr>
-            <th scope="row">
-              2
-            </th>
-            <td>
-              peu urgente
-            </td>
-            <td>
-              planification de sprint
-            </td>
-            <td>
-              fixer les taches à réaliser dans le sprint suivant.
-            </td>
-            <td>
-              20/04/2019
-            </td>
-
           </tr>
 
         </tbody>
@@ -144,4 +126,4 @@
 </div>
   </div>
   </div>
->
+

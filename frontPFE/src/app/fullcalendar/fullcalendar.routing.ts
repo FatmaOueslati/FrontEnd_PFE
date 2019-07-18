@@ -6,7 +6,7 @@ export const FullcalendarRoutes: Routes = [{
   path: '',
   component: FullcalendarComponent,
   data: {
-    heading: 'Calendar',
+    heading: 'Réunions',
     removeFooter: true
   }
 }];

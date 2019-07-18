@@ -1,8 +1,15 @@
 <br>
-
 <div class="row">
 
-  <div class="col-md-7">
+
+
+
+
+
+
+
+
+  <div class="col-md-8">
  <div class="card">
    <div class="card-header" *ngIf="project">
     <h6 class="card-title text-uppercase">{{project.name}}</h6>
@@ -12,14 +19,14 @@
       {{project.description}}
       <br>
       <br>
+      <button type="button" class="btn float-right btn-danger ">Modifier</button>
 
-      <button type="button" class="btn float-right btn-warning ">Modifier</button>
     </p>
    </div>
  </div>
 </div>
 
-  <div class="col-md-5">
+  <div class="col-md-4">
 
     <div class="card">
       <div class="card-header">
@@ -31,10 +38,10 @@
         <p class="card-text">
           <b>Scrum Master :</b> Bilel Béjaoui <br>
           <b> Testeur :</b> Hajer Ben Mahmoud<br>
-            <b> Développeur(se) :</b> Fatma Oueslati<br>
-              <b> Développeur(se) :</b> Oumaima Ferjani<br>
+          <b> Développeur(se) :</b> Fatma Oueslati<br>
+          <b> Développeur(se) :</b> Oumaima Ferjani<br>
 
-          <button type="button" class="btn float-right btn-warning ">Modifier</button>
+          <button type="button" class="btn float-right btn-danger ">Modifier</button>
           <br>
         </p>
       </div>
@@ -42,11 +49,20 @@
 
   </div>
 </div>
+<div class="row">
+<div class="col-md-6">
+  <div class="btn-group float-right mt-lg-3" role="group">
+    <!--button type="button" class="btn float-right btn-dark " [routerLink]="['/calendar']">  Reunions </button>-->
+    <!--button type="button" class="btn float-right btn-dark " [routerLink]="['/taskboard/',projectid]">  Reunions </button>-->
+    <button type="button" class="btn float-right btn-dark " [routerLink]="['/tables/basic/',projectid]">  Reunions </button>
+    <button type="button" class="btn float-right btn-dark ">Ajout Epic</button>
+
+  </div>
+</div>
+</div>
 
 <br>
-
 <br>
-
 <div class="row">
 <div class="col-md-1"></div>
   <div class="col-md-9">
@@ -65,7 +81,9 @@
 
             <div class="col-md-10">
               <div class="btn-group float-right mt-2" role="group">
-                <button type="button" class="btn btn-info btn-lg mr-1">Détails</button>
+
+                <button type="button" class="btn float-right btn-dark " [routerLink]="['/taskboard']">  Détails </button>
+                <button routerLink="/datatable/selection" type="button" class="btn btn-info btn-lg mr-1">Export</button>
                 <button type="button" class="btn btn-dark btn-lg mr-1">Modifier</button>
                 <button type="button" class="btn btn-danger btn-lg mr-1">Supprimer</button>
               </div>
@@ -83,4 +101,5 @@
   <div class="col-md-1">
   </div>
 </div>
+
 

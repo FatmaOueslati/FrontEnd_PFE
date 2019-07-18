@@ -5,20 +5,21 @@
              Vos informations
          </div>
        <div class="card-body">
-        <p class="card-text">
-          <strong>Nom d'utilisation :</strong> FatmaOues
+        <p class="card-text" *ngIf="profileDetails">
+
+          <strong>Nom d'utilisation :</strong> {{profileDetails.username}}
          <br>
           <br>
           <br>
-          <strong> Nom et Prénom :</strong> Fatma Oueslati
+          <strong> Nom et Prénom :</strong> {{profileDetails.name}}
           <br>
           <br>
           <br>
-            <strong>E-mail : </strong>fatma.oueslati@gmail.com
+            <strong>E-mail : </strong>{{profileDetails.email}}
           <br>
           <br>
           <br>
-              <strong> Téléphone :</strong> 27703214
+              <strong> Téléphone :</strong> {{profileDetails.phone}}
 
         </p>
        </div>
@@ -31,31 +32,47 @@
       <div class="card-body">
         <form class="form-horizontal" novalidate>
 
+
+
           <div class="form-group row">
-            <label for="id-nom" class="col-3 col-form-label">Nom d'utilisation</label>
+            <label for="id-nom" class="col-3 col-form-label">Nom et prenom</label>
             <div class="col-9">
-              <input class="form-control" type="text" value="" id="id-nom" placeholder="Nom d'utilisation">
+              <input [(ngModel)]="name" class="form-control" type="text" value="" name="name" placeholder="Nom et prenom">
             </div>
           </div>
 
-          <br>
-          <br>
+
           <div class="form-group row" [ngClass]="{'has-danger': email?.errors?.email}">
             <label class="col-3 col-form-label">E-mail</label>
             <div class="col-9">
-              <input class="form-control"  placeholder="E-mail" type="text" ngModel name="email" #email="ngModel" email [ngClass]="{'form-control-danger': email?.errors?.email}"/>
+              <input [(ngModel)]="email"  class="form-control"  placeholder="E-mail" type="email"  name="email" />
               <div class="form-control-feedback" *ngIf="email?.errors?.email">Vérifier votre E-mail</div>
             </div>
           </div>
-          <br>
-          <br>
+
 
           <div class="form-group row">
-            <label class="col-3 col-form-label">Mot de passe</label>
+            <label for="id-nom" class="col-3 col-form-label">Téléphone</label>
             <div class="col-9">
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+              <input [(ngModel)]="phoneNumer" name="phoneNumer" class="form-control" type="number" value="" id="id-nom" placeholder="Téléphone">
+            </div>
+          </div>
+
+
+          <div class="form-group row">
+            <label class="col-3 col-form-label">Ancien mot de passe</label>
+            <div class="col-9">
+            <input  [(ngModel)]="oldPassword" name="oldPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Ancien mot de passe">
           </div>
           </div>
+
+          <div class="form-group row">
+            <label class="col-3 col-form-label">Nouveau mot de passe</label>
+            <div class="col-9">
+              <input [(ngModel)]="newPassword" name="newPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Nouveau mot de passe">
+            </div>
+          </div>
+
         </form>
 
 
@@ -65,7 +82,7 @@
         <br>
         <div class="col-md-10">
           <div class="btn-group float-right mt-2" role="group">
-            <button type="button" class="btn btn-outline-info btn-lg mr-1">Modifier</button>
+            <button (click)="updateProfile()" type="button" class="btn btn-outline-info btn-lg mr-1">Modifier</button>
             <button type="button" class="btn btn-outline-danger btn-lg mr-1">Annuler</button>
 
           </div>

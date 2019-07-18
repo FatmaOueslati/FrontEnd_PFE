@@ -51,5 +51,8 @@ export class DashboardService {
   deleteProject(id) {
     return this.http.delete(  'http://localhost:8000/api/projects/' + id , {headers : this.headers} );
   }
+  GetMeetings() {
+    return this.http.get('http://localhost:8000/api/meetings/' , { headers: this.headers} )
+  }
 
 }

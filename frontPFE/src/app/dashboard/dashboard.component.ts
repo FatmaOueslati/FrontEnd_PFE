@@ -132,10 +132,7 @@ export class DashboardComponent implements OnInit {
   }
   LoadCards() {
     this.cards.getCards(this.cardsdaata).subscribe(data => {
-     //  this.projectsdata = data ;
-     // this.projectsdata = Object.keys(data);
-      // this.projectsdata = Object['values'](data);
-     // this.projects = JSON.stringify(data);
+
       this.projectsdata = Array.of(data);
      console.log('daaaaaaaaaaaaaaaaaaaaaaaaaaaaata projects' , this.projectsdata);
     });

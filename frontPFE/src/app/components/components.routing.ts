@@ -36,7 +36,7 @@ export const ComponentsRoutes: Routes = [
       path: 'accordion/:id',
       component: AccordionComponent,
       data: {
-        heading: 'Accordion'
+        heading: 'Détails projets'
       }
     }, {
       path: 'alert',

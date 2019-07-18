@@ -43,13 +43,13 @@ export const DatatableRoutes: Routes = [
       data: {
         heading: 'Pinning'
       }
-    }, {
+    }, */{
       path: 'selection',
       component: TableSelectionComponent,
       data: {
-        heading: 'Selection'
+        heading: 'Export'
       }
-    }, {
+    }/*, {
       path: 'sorting',
       component: TableSortingComponent,
       data: {

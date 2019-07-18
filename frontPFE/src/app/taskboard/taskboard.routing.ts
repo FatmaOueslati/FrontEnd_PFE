@@ -6,7 +6,7 @@ export const TaskboardRoutes: Routes = [{
   path: '',
   component: TaskboardComponent,
   data: {
-    heading: 'Taskboard',
+    heading: 'Liste des user stories',
     removeFooter: true
   }
 }];

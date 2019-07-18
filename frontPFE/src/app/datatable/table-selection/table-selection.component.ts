@@ -13,7 +13,7 @@ export class TableSelectionComponent {
     { name: 'Company' },
     { name: 'Gender' }
   ];
-
+  show=true;
   constructor() {
     this.fetch((data) => {
       this.rows = data;
@@ -37,5 +37,13 @@ export class TableSelectionComponent {
 
   onActivate(event) {
     console.log('Event: activate', event);
+  }
+  print(): void {
+    this.show = false;
+    setTimeout(function(){  window.print(); }, 100);
+    setTimeout(() => {  this.show = true; }, 100);
+
+
+
   }
 }

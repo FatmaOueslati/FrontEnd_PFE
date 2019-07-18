@@ -13,13 +13,13 @@ export const FormRoutes: Routes = [
       path: 'editor',
       component: EditorComponent,
       data: {
-        heading: 'Editor'
+        heading: 'Créer user story'
       }
     }, {
       path: 'validation',
       component: ValidationComponent,
       data: {
-        heading: 'Validation'
+        heading: 'Profil'
       }
     }, {
       path: 'upload',

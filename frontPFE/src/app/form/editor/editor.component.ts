@@ -5,7 +5,8 @@ import {UserStoryService} from './user-story.service';
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
-  styleUrls: ['./editor.component.scss']
+  styleUrls: ['./editor.component.scss'],
+  providers: [UserStoryService]
 })
 export class EditorComponent implements OnInit {
   public user = {

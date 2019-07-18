@@ -7,10 +7,10 @@ export const TablesRoutes: Routes = [
   {
     path: '',
     children: [{
-      path: 'basic',
+      path: 'basic/:id',
       component: BasicComponent,
       data: {
-        heading: 'Basic table'
+        heading: 'Réunions'
       }
     }, /*{
       path: 'responsive',
